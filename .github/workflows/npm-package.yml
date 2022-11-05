@@ -11,4 +11,4 @@ jobs:
       - name: Authenticate with private NPM package
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - name: Authenticate with private NPM package
-        run: npm adduser
+        run: echo -e 'quickback.co\n${{ secrets.PASSWORD  }}\nmarc@quickback.co' | npm login -e marc@quickback.co -r https://registry.npmjs.org
