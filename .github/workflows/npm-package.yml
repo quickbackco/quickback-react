@@ -16,7 +16,6 @@ jobs:
           always-auth: true
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: npm adduser
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
