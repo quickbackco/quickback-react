@@ -6,6 +6,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <div>
       <h1>Hello</h1>test
-      <Quickback url={'test'} />
+      <Quickback />
     </div>
 );
