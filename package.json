@@ -10,7 +10,7 @@
   "scripts": {
     "build": "rm -rf dist && NODE_ENV=production babel src/quickback.js --out-dir dist --copy-files && babel src/quickback.css --out-dir dist/css --copy-files",
     "start": "react-scripts start",
-    "publish": "npm publish"
+    "publish": "npm publish --access=public"
   },
   "eslintConfig": {
     "extends": [
