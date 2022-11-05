@@ -1,14 +1,19 @@
-name: public npm package
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Publish Package to npmjs
 on:
   push:
     branches:
       - main
 jobs:
-  npm-package-publication:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Authenticate with private NPM package
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-      - name: Authenticate with private NPM package
-        run: echo -e 'quickback.co\n${{ secrets.PASSWORD  }}\nmarc@quickback.co' | npm login -e marc@quickback.co -r https://registry.npmjs.org
+      - uses: actions/checkout@v3
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
