@@ -28,6 +28,9 @@ var Quickback = function Quickback(_ref) {
     sended = _useState4[0],
     setSended = _useState4[1];
   var textareaRef = (0, _react.useRef)();
+  var handleCancel = function handleCancel() {
+    textareaRef.current.value = "";
+  };
   var handleSubmit = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
       var quickback_text;
@@ -80,7 +83,8 @@ var Quickback = function Quickback(_ref) {
     className: "flex justify-between overflow-hidden p-2 text-sm font-medium opacity-100 transition-all duration-100 peer-placeholder-shown:h-0 peer-placeholder-shown:w-0 peer-placeholder-shown:p-0 peer-placeholder-shown:opacity-100 peer-focus:flex peer-focus:h-auto peer-focus:w-auto peer-focus:p-2 peer-focus:opacity-100"
   }, /*#__PURE__*/_react.default.createElement("a", {
     href: "#",
-    className: "rounded-md bg-gray-100 py-1 px-2 dark:bg-zinc-900 dark:text-white"
+    className: "rounded-md bg-gray-100 py-1 px-2 dark:bg-zinc-900 dark:text-white",
+    onClick: handleCancel
   }, "Cancel"), /*#__PURE__*/_react.default.createElement("input", {
     type: "submit",
     value: "Send feedback",
