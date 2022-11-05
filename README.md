@@ -1,7 +1,7 @@
 
 <img src="https://i.imgur.com/2wEJ5Is.png" height="100">
 
-# Quickback
+# Quickback for react
 
 Listen to your users
 
