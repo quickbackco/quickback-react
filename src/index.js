@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+// import React from 'react';
+// import ReactDOM from 'react-dom/client';
 import './index.css'
 import Quickback from './quickback';
 // import Quickback from '@quickbackco/quickback-react'
@@ -8,7 +8,7 @@ import Quickback from './quickback';
 // root.render(
 //     <div>
 //       <h1>Hello</h1>
-//       {/* <Quick url="" /> */}
+//       <Quickback url={'test'} />
 //     </div>
 // );
 

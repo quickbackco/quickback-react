@@ -1,9 +1,10 @@
 {
   "name": "@quickbackco/quickback-react",
-  "version": "0.1.0",
+  "version": "0.2.5",
   "private": false,
+  "main": "dist/index.js",
   "dependencies": {
-    "@quickbackco/quickback-react": "^0.1.0",
+    "@quickbackco/quickback-react": "^0.2.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,10 +15,9 @@
   },
   "scripts": {
     "publish:npm": "rm -rf dist && mkdir dist &&  babel src -d dist --copy-files",
-    "start": "react-scripts start",
     "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-scripts start",
+    "publish": "npm publish"
   },
   "eslintConfig": {
     "extends": [
@@ -38,7 +38,6 @@
     ]
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
   "keywords": [
     "quickback",
     "feedback",

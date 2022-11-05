@@ -1329,11 +1329,25 @@
   resolved "https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@quickbackco/quickback-react@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@quickbackco/quickback-react/-/quickback-react-0.1.0.tgz#0cdd7f76f6af1671591523608cb9b2fa2d17c414"
-  integrity sha512-wWaSfM+Ag4Y8Yb9/dulxjaoLzMQVMfCc51MnDSZCuuhTyhZrcmxAv768fg8203OJhpbpSJKelTEhv3x6gOqrbg==
+"@quickbackco/quickback-react@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@quickbackco/quickback-react/-/quickback-react-0.2.3.tgz#1c2ef8792172d538cc60a68e7616c95b48e25861"
+  integrity sha512-N/9YaOteVCUGp9i9hvQG2ZHA50Zqt2TZm7sDTV8V+hg3nAaPPYs0UcbhOVrhZntjgRbK+uIHs5dAYCipnfrC7A==
   dependencies:
+    "@testing-library/jest-dom" "^5.16.5"
+    "@testing-library/react" "^13.4.0"
+    "@testing-library/user-event" "^13.5.0"
+    react "^18.2.0"
+    react-dom "^18.2.0"
+    react-scripts "^2.1.3"
+    web-vitals "^2.1.4"
+
+"@quickbackco/quickback-react@^0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@quickbackco/quickback-react/-/quickback-react-0.2.5.tgz#97b40a5f78de87bb87524ba4a4a3849c7a54722c"
+  integrity sha512-0vS9kREZqVxUaVPeyRTLWsRjOFTUIQs3+fuCBUHdpZfqqs5fIRlMXy3J+tEsT5eP0SJufdaj/Vl8VkWbU3yxPw==
+  dependencies:
+    "@quickbackco/quickback-react" "^0.2.3"
     "@testing-library/jest-dom" "^5.16.5"
     "@testing-library/react" "^13.4.0"
     "@testing-library/user-event" "^13.5.0"

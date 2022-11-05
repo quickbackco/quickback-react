@@ -14,7 +14,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // root.render(
 //     <div>
 //       <h1>Hello</h1>
-//       {/* <Quick url="" /> */}
 //     </div>
 // );
 var _default = _quickback.default;
