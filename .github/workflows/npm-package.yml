@@ -18,6 +18,6 @@ jobs:
           cat .npmrc
       - run: yarn install --frozen-lockfile
       - run: yarn build
-      - run: npm publish --access=public
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
