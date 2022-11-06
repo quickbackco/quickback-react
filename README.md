@@ -5,6 +5,7 @@
 
 Listen to your users
 
+https://quickback.co/
 
 ## Installation
 
@@ -20,7 +21,6 @@ Install Quickback with npm or yarn
 ```javascript
 import React from 'react
 import Quickback from '@quickbackco/quickback-react'
-import '@quickbackco/quickback-react/dist/css/quickback.css'
 
 function App() {
   return <div>

@@ -1,13 +1,155 @@
 import React, {useEffect, useRef, useState} from 'react'
+import styled from 'styled-components'
+
+const cssCommon = `
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+    &::after {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        border-color: #e5e7eb;
+        --tw-content: '';
+    }
+    &::before {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+        border-color: #e5e7eb;
+        --tw-content: '';
+    }
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-feature-settings: normal;
+`
+
+const cssButtonGroup = `
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    border-radius: 0.375rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+`
+
+const cssBorder = `
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+`
+
+const Form = styled.form`
+    ${cssBorder}
+    ${cssCommon}
+    position: absolute;
+    z-index: 99999;
+    display: flex;
+    bottom: 2rem;
+    right: 8rem;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    background-color: rgb(255 255 255 / 1);
+`
+
+const Textarea = styled.textarea`
+    ${cssCommon}
+    resize: none;
+    padding: 0.5rem;
+    height: 2.25rem;
+    width: 6rem;
+    border-width: 0px;
+    background-color: transparent;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 100ms;
+
+    &:placeholder-shown {
+        height: 2.25rem;
+        width: 6rem;
+    }
+    &:placeholder {
+        opacity: 1;
+        color: #9ca3af;
+    }
+    &:focus {
+        height: 3rem;
+        width: 16rem;
+        outline: 0px solid transparent;
+        outline-offset: 0px;
+    }
+`
+
+const Wrapper = styled.div`
+    ${cssCommon}
+    display: ${({open}) => open ? 'flex' : 'none'};
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 100ms;
+    opacity: 1;
+    font-weight: 500;
+    background-color: ${({color}) => color};
+
+    &:placeholder-shown {
+        height: 0px;
+        width: 0px;
+        padding: 0px;
+        opacity: 1;
+    }
+    &:focus {
+        display: ${({open}) => open ? 'flex' : 'none'};
+        height: auto;
+        width: auto;
+        padding: 0.5rem;
+        opacity: 1;
+    }
+`
+const Cancel = styled.a`
+    ${cssCommon}
+    ${cssButtonGroup}
+    color: inherit;
+    text-decoration: inherit;
+    background-color: rgb(243 244 246 / 1);
+`
+
+const Quicksend = styled.input`
+    ${cssCommon}
+    ${cssButtonGroup}
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+    cusor: pointer;
+    background: #ff9000;
+`
 
 const Quickback = ({url}) => {
+    const [open, setOpen] = useState(false)
     const [quicking, setQuicking] = useState(false)
     const [sended, setSended] = useState(false)
-
     const textareaRef = useRef()
+    const formRef = useRef()
 
     const handleCancel = () => {
         textareaRef.current.value = ""
+        setOpen(false)
     }
 
     const handleSubmit = async event => {
@@ -32,20 +174,28 @@ const Quickback = ({url}) => {
         setTimeout(setSended(false), 5000)
     }
 
+    useEffect(() => {
+        const clickout = event => {
+            if (formRef.current && !formRef.current.contains(event.target)) {
+                handleCancel()
+            }
+        }
+        document.addEventListener('click', clickout)
+        return () => {
+            document.removeEventListener('click', clickout)
+        }
+    }, [textareaRef])
 
-    return <form onSubmit={handleSubmit} id="quickback-wrapper-id-system" className="absolute bottom-8 right-8 flex flex-col rounded-lg border bg-white dark:bg-zinc-800">
-            <textarea ref={textareaRef} name="feedly_text" placeholder="Quickback ?" rows="3" minLength="3" className="quick-area peer h-12 w-64 resize-none border-0 bg-transparent p-2 text-sm transition-all duration-100 placeholder-shown:h-9 placeholder-shown:w-24 focus:h-12 focus:w-64 focus:outline-none dark:text-white"></textarea>
-            <div
-            className="flex justify-between overflow-hidden p-2 text-sm font-medium opacity-100 transition-all duration-100 peer-placeholder-shown:h-0 peer-placeholder-shown:w-0 peer-placeholder-shown:p-0 peer-placeholder-shown:opacity-100 peer-focus:flex peer-focus:h-auto peer-focus:w-auto peer-focus:p-2 peer-focus:opacity-100">
-            <a href="#" className="rounded-md bg-gray-100 py-1 px-2 dark:bg-zinc-900 dark:text-white" onClick={handleCancel}>Cancel</a>
-            <input
+    return <Form ref={formRef} onSubmit={handleSubmit} id="quickback-wrapper-id-system" >
+        <Textarea ref={textareaRef} name="feedly_text"  placeholder="Quickback ?" rows="3" minLength="3" onFocus={() => setOpen(true)}></Textarea>
+        <Wrapper open={open}>
+            <Cancel href="#">Cancel</Cancel>
+            <Quicksend
                 type="submit"
-                value="Send feedback"
-                className="cursor-pointer rounded-md bg-blue-500 py-1 px-2 text-white hover:bg-blue-400 dark:hover:bg-blue-600"
-                style={{background: '#ff9000'}}
+                value="Quickback"
             />
-        </div>
-    </form>
+        </Wrapper>
+    </Form>
 
 }
 
