@@ -67,8 +67,6 @@ const Textarea = styled.textarea`
     ${cssCommon}
     resize: none;
     padding: 0.5rem;
-    height: 2.25rem;
-    width: 6rem;
     border-width: 0px;
     background-color: transparent;
     font-size: 0.875rem;
@@ -76,20 +74,19 @@ const Textarea = styled.textarea`
     transition-property: all;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 100ms;
+    ${({style}) => (style.textarea && Object.keys(style.textarea).length > 0 )? `${Object.entries(style.textarea).map(([k, v]) => `${k}:${v}`).join(';')};` : 'height: 2.25rem;width: 6rem;'}
 
     &:placeholder-shown {
-        height: 2.25rem;
-        width: 6rem;
+        ${({style}) => (style.textarea && Object.keys(style.textarea).length > 0 )? `${Object.entries(style.textarea).map(([k, v]) => `${k}:${v}`).join(';')};` : 'height: 2.25rem;width: 6rem;'}
     }
     &:placeholder {
         opacity: 1;
         color: #9ca3af;
     }
     &:focus {
-        height: 3rem;
-        width: 16rem;
         outline: 0px solid transparent;
         outline-offset: 0px;
+        ${({style}) => (style.focus && Object.keys(style.focus).length > 0) ? `${Object.entries(style.focus).map(([k, v]) => `${k}:${v}`).join(';')};` : 'height: 3rem;width: 16rem;'}
     }
 `
 
@@ -140,7 +137,10 @@ const Quicksend = styled.input`
     background: #ff9000;
 `
 
-const Quickback = ({url}) => {
+const Quickback = ({url, placeholder = "Quickback ?", style = {
+    textarea: {},
+    focus: {}
+}}) => {
     const [open, setOpen] = useState(false)
     const [quicking, setQuicking] = useState(false)
     const [sended, setSended] = useState(false)
@@ -186,8 +186,15 @@ const Quickback = ({url}) => {
         }
     }, [textareaRef])
 
-    return <Form ref={formRef} onSubmit={handleSubmit} id="quickback-wrapper-id-system" >
-        <Textarea ref={textareaRef} name="feedly_text"  placeholder="Quickback ?" rows="3" minLength="3" onFocus={() => setOpen(true)}></Textarea>
+    return <Form ref={formRef} onSubmit={handleSubmit} id="quickback-wrapper-id-system">
+        <Textarea
+            ref={textareaRef}
+            name="feedly_text"
+            placeholder={placeholder}
+            rows="3" minLength="3"
+            onFocus={() => setOpen(true)}
+            style={style}
+        ></Textarea>
         <Wrapper open={open}>
             <Cancel href="#">Cancel</Cancel>
             <Quicksend
