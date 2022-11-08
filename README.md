@@ -28,3 +28,27 @@ function App() {
   </div>
 }
 ```
+
+## Parameters
+
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| url | `string` | **Required**. Given Quickback url |
+| placeholder| `string` |  Customize placeholder text |
+| style| `object` |  Customize textarea style. (see below) |
+
+
+## Usage/Examples
+
+```javascript
+style={{
+  textarea: {}
+  focus: {}
+}}
+
+-----------------------------------------------------------------------------------------
+
+<Quickback placeholder="Customize ?" style={{focus: {width: '24rem', height: '10rem'}}} />
+```
+
