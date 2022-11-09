@@ -7,6 +7,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <div>
         <h1>Hello</h1>test
-        <Quickback id={process.env.REACT_APP_TEST_ID} placeholder="Customize ?"  />
+        <Quickback id={process.env.REACT_APP_TEST_ID} placeholder="Customize ?" />
     </div>
 );
