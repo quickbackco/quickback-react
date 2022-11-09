@@ -9,7 +9,7 @@
     "styled-components": "^5.3.6"
   },
   "scripts": {
-    "build": "NODE_ENV=production  babel src/quickback.js --out-dir dist --copy-files",
+    "build": "babel src/quickback.js --out-dir dist --copy-files",
     "start": "react-scripts start",
     "npm:publish": "npm publish --access=public"
   },
