@@ -2,15 +2,15 @@
   "name": "@quickbackco/quickback-react",
   "version": "1.2.0",
   "private": false,
-  "main": "dist/quickback.js",
+  "main": "build",
   "dependencies": {
     "react": "^18.2.0",
     "react-scripts": "^2.1.3",
     "styled-components": "^5.3.6"
   },
   "scripts": {
-    "build": "NODE_ENV=production  babel src/quickback.js --out-dir dist --copy-files",
-    "react:build": "react-scripts build",
+    "babel:build": "NODE_ENV=production  babel src/quickback.js --out-dir dist --copy-files",
+    "build": "rm -rf build && react-scripts build",
     "start": "react-scripts start",
     "npm:publish": "npm publish --access=public"
   },
