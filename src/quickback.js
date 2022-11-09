@@ -145,7 +145,7 @@ const Quickback = ({id, placeholder = "Quickback ?", style = {
         setQuicking(true)
         const quickback_text = textareaRef.current.value
 
-        await fetch(`${process.env.REACT_APP_API_URL}/${id}`, {
+        await fetch(`https://quickback.onrender.com/f/${id}`, {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
