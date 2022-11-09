@@ -10,4 +10,6 @@ import Quickback from './quickback'
 //     </div>
 // );
 
-export default <Quickback />
+// root.render(<Quickback />)
+
+export default Quickback
