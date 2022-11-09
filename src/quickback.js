@@ -92,10 +92,9 @@ const Textarea = styled.textarea`
 
 const Wrapper = styled.div`
     ${cssCommon}
-    display: ${({open}) => open ? 'flex' : 'none'};
+    display: flex;
     justify-content: space-between;
     overflow: hidden;
-    padding: 0.5rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
     transition-property: all;
@@ -104,20 +103,8 @@ const Wrapper = styled.div`
     opacity: 1;
     font-weight: 500;
     background-color: ${({color}) => color};
-
-    &:placeholder-shown {
-        height: 0px;
-        width: 0px;
-        padding: 0px;
-        opacity: 1;
-    }
-    &:focus {
-        display: ${({open}) => open ? 'flex' : 'none'};
-        height: auto;
-        width: auto;
-        padding: 0.5rem;
-        opacity: 1;
-    }
+    height: ${({open}) => open ? '3.25rem' : '0'};
+    padding: ${({open}) => open ? '0.5rem' : '0'};
 `
 const Cancel = styled.a`
     ${cssCommon}
@@ -133,11 +120,11 @@ const Quicksend = styled.input`
     -webkit-appearance: button;
     background-color: transparent;
     background-image: none;
-    cusor: pointer;
+    cursor: pointer;
     background: #ff9000;
 `
 
-const Quickback = ({url, placeholder = "Quickback ?", style = {
+const Quickback = ({id, placeholder = "Quickback ?", style = {
     textarea: {},
     focus: {}
 }}) => {
@@ -157,7 +144,7 @@ const Quickback = ({url, placeholder = "Quickback ?", style = {
         setQuicking(true)
         const quickback_text = textareaRef.current.value
 
-        await fetch(`${url}`, {
+        await fetch(`${process.env.REACT_APP_API_URL}/${id}`, {
             method: 'post',
             headers: {
                 'Accept': 'application/json',
@@ -171,6 +158,7 @@ const Quickback = ({url, placeholder = "Quickback ?", style = {
         textareaRef.current.value = ""
         setQuicking(false)
         setSended(true)
+        setOpen(false)
         setTimeout(setSended(false), 5000)
     }
 

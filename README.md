@@ -24,7 +24,7 @@ import Quickback from '@quickbackco/quickback-react'
 
 function App() {
   return <div>
-    <Quickback url="[my-url]" />
+    <Quickback id="[quickback-id]" />
   </div>
 }
 ```
@@ -34,7 +34,7 @@ function App() {
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| url | `string` | **Required**. Given Quickback url |
+| id | `string` | **Required**. Given Quickback id |
 | placeholder| `string` |  Customize placeholder text |
 | style| `object` |  Customize textarea style. (see below) |
 
@@ -49,6 +49,6 @@ style={{
 
 -----------------------------------------------------------------------------------------
 
-<Quickback placeholder="Customize ?" style={{focus: {width: '24rem', height: '10rem'}}} />
+<Quickback id="[quickback-id]" placeholder="Customize ?" style={{focus: {width: '24rem', height: '10rem'}}} />
 ```
 
