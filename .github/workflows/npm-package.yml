@@ -15,7 +15,8 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           always-auth: true
       - run: yarn install --frozen-lockfile
-      - run: yarn build
+      # - run: yarn build
+      - run: NODE_ENV=production REACT_APP_API_URL=$REACT_APP_API_URL  babel src/quickback.js --out-dir dist --copy-files
       - run: yarn npm:publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

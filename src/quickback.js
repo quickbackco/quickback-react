@@ -53,7 +53,7 @@ const cssBorder = `
 const Form = styled.form`
     ${cssBorder}
     ${cssCommon}
-    position: absolute;
+    position: fixed;
     z-index: 99999;
     display: flex;
     bottom: 2rem;
